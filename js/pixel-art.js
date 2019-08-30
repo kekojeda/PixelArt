@@ -108,11 +108,18 @@ function pintarCorrido(e) {
 function borrar(e){
   $("div.pixel").animate({"background-color": "white"},1000);
 }
-/*
+
+
+for(let i = 0;i<superHeroes.length;i++){
+    superHeroes[i].addEventListener('click', superHeroes[i].id);
+}
+
+
+
 function loadSuperHeroe(e){
   cargarSuperheroe(batman);
 }
-*/
+
 /*
 For Only First Element
 var upTop = document.querySelector('.playlist-item');
