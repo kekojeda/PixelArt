@@ -25,7 +25,10 @@ var grillaPixeles = document.getElementById("grilla-pixeles");
 var indicadorColor = document.getElementById("indicador-de-color");
 var pixelGrilla = document.getElementsByClassName("pixel");
 var borrarTodo = document.getElementById("borrar");
+var goma = document.getElementById("goma");
 var guardar = document.getElementById("guardar");
+
+
 
 
 /**
@@ -87,6 +90,7 @@ paleta.addEventListener("click", asignarColor);
 grillaPixeles.addEventListener("mousedown", pintar);
 grillaPixeles.addEventListener("mousemove", pintarCorrido);
 borrarTodo.addEventListener("click", borrar);
+goma.addEventListener("mousemove", borrarGoma);
 
 
 
@@ -144,6 +148,14 @@ function pintar(e) {
 function pintarCorrido(e) {
   if (test) {
     e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+  } else {
+    console.log("no esta apretado");
+  }
+}
+
+function borrarGoma(e) {
+  if (test) {
+    e.target.style.backgroundColor = "white";
   } else {
     console.log("no esta apretado");
   }
