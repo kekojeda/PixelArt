@@ -25,8 +25,55 @@ var grillaPixeles = document.getElementById("grilla-pixeles");
 var indicadorColor = document.getElementById("indicador-de-color");
 var pixelGrilla = document.getElementsByClassName("pixel");
 var borrarTodo = document.getElementById("borrar");
-var $superHeroes = $("ul.imgs li img").addClass("superHeroes");
-var superHeroes = document.getElementsByClassName("superHeroes");
+var guardar = document.getElementById("guardar");
+
+
+/**
+ * Guarda PixelArt
+ */
+guardar.addEventListener("click", savePixelArt);
+
+function savePixelArt() {
+  guardarPixelArt();
+}
+
+
+/**
+ * Carga SuperHeroes en la grilla
+ */
+var batmanPixel = document.getElementById("batman");
+var wonderWomanPixel = document.getElementById("wonder");
+var flashPixel = document.getElementById("flash");
+var InvisiblePixel = document.getElementById("invisible");
+
+batmanPixel.addEventListener("click", cargarBatman);
+wonderWomanPixel.addEventListener("click", cargarWonder);
+flashPixel.addEventListener("click", cargarFlash);
+InvisiblePixel.addEventListener("click", cargarInvisible);
+
+function cargarBatman() {
+  cargarSuperheroe(batman)
+  console.log("se cargo batman");
+}
+
+function cargarFlash() {
+  cargarSuperheroe(flash)
+  console.log("se cargo flash");
+}
+
+function cargarWonder() {
+  cargarSuperheroe(wonder)
+  console.log("se cargo Wonder Womman");
+}
+
+function cargarInvisible() {
+  cargarSuperheroe(invisible)
+  console.log("se cargo invisible");
+}
+
+/**
+ * FIN Carga SuperHeroes en la grilla
+ */
 
 
 var test;
@@ -34,14 +81,14 @@ var test;
 /// Ejecucion de Funciones
 paletaColores();
 createGrilla();
-//mouseOnPress();
+
 
 paleta.addEventListener("click", asignarColor);
 grillaPixeles.addEventListener("mousedown", pintar);
 grillaPixeles.addEventListener("mousemove", pintarCorrido);
 borrarTodo.addEventListener("click", borrar);
 
-//superHeroes.addEventListener("click", loadSuperHeroe);
+
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
@@ -56,12 +103,12 @@ colorPersonalizado.addEventListener('change',
   })
 );
 
-grillaPixeles.addEventListener('mousedown', function(e) {
+grillaPixeles.addEventListener('mousedown', function (e) {
   console.log('El raton se esta presionando');
   test = true;
-  e.target.addEventListener('mouseup', function(e) {
-     console.log('El raton NO se esta presionando');
-     test = false;
+  e.target.addEventListener('mouseup', function (e) {
+    console.log('El raton NO se esta presionando');
+    test = false;
   });
 });
 
@@ -87,7 +134,7 @@ function createGrilla() {
 
 function asignarColor(e) {
   indicadorColor.style.backgroundColor = e.target.style.backgroundColor;
-  
+
 }
 
 function pintar(e) {
@@ -95,30 +142,38 @@ function pintar(e) {
 }
 
 function pintarCorrido(e) {
-  if(test){
-     e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
-}else{
-  console.log("no esta apretado");
-}
+  if (test) {
+    e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+  } else {
+    console.log("no esta apretado");
+  }
 }
 
 /*
   Funcion que borra toda la grilla
 */
-function borrar(e){
-  $("div.pixel").animate({"background-color": "white"},1000);
+function borrar(e) {
+  $("div.pixel").animate({ "background-color": "white" }, 1000);
 }
 
-
+/*
 for(let i = 0;i<superHeroes.length;i++){
-    superHeroes[i].addEventListener('click', superHeroes[i].id);
+    var idSuper = superHeroes[i].id;
+    if (idSuper == "batman"){
+      let sh = batman;
+      superHeroes[i].addEventListener('click', loadSuperHeroe);
+
+    }
 }
+/*/
 
 
+/*
 
 function loadSuperHeroe(e){
-  cargarSuperheroe(batman);
+  cargarSuperheroe(sh);
 }
+ */
 
 /*
 For Only First Element
