@@ -28,8 +28,11 @@ var borrarTodo = document.getElementById("borrar");
 var goma = document.getElementById("goma");
 var guardar = document.getElementById("guardar");
 
-
-
+/**
+ * Se Ejecutan las Funciones
+ */
+paletaColores();
+createGrilla();
 
 /**
  * Guarda PixelArt
@@ -73,7 +76,6 @@ function cargarInvisible() {
   cargarSuperheroe(invisible)
   console.log("se cargo invisible");
 }
-
 /**
  * FIN Carga SuperHeroes en la grilla
  */
@@ -81,17 +83,13 @@ function cargarInvisible() {
 
 var test;
 
-/// Ejecucion de Funciones
-paletaColores();
-createGrilla();
+
 
 
 paleta.addEventListener("click", asignarColor);
 grillaPixeles.addEventListener("mousedown", pintar);
-grillaPixeles.addEventListener("mousemove", pintarCorrido);
+//grillaPixeles.addEventListener("click", pintarCorrido);
 borrarTodo.addEventListener("click", borrar);
-goma.addEventListener("mousemove", borrarGoma);
-
 
 
 // Variable para guardar el elemento 'color-personalizado'
@@ -107,6 +105,7 @@ colorPersonalizado.addEventListener('change',
   })
 );
 
+
 grillaPixeles.addEventListener('mousedown', function (e) {
   console.log('El raton se esta presionando');
   test = true;
@@ -119,12 +118,9 @@ grillaPixeles.addEventListener('mousedown', function (e) {
 function paletaColores() {
   for (var i = 0; i < nombreColores.length; i++) {
     var color = document.createElement('div');
-    //color.textContent = nombreColores[i];
     color.style.backgroundColor = nombreColores[i];
     color.className = "color.paleta";
     paleta.appendChild(color);
-    //console.log(nombreColores[i]);
-
   }
 }
 
@@ -138,7 +134,6 @@ function createGrilla() {
 
 function asignarColor(e) {
   indicadorColor.style.backgroundColor = e.target.style.backgroundColor;
-
 }
 
 function pintar(e) {
@@ -167,46 +162,3 @@ function borrarGoma(e) {
 function borrar(e) {
   $("div.pixel").animate({ "background-color": "white" }, 1000);
 }
-
-/*
-for(let i = 0;i<superHeroes.length;i++){
-    var idSuper = superHeroes[i].id;
-    if (idSuper == "batman"){
-      let sh = batman;
-      superHeroes[i].addEventListener('click', loadSuperHeroe);
-
-    }
-}
-/*/
-
-
-/*
-
-function loadSuperHeroe(e){
-  cargarSuperheroe(sh);
-}
- */
-
-/*
-For Only First Element
-var upTop = document.querySelector('.playlist-item');
-Using for loop
-If you want to add event listener on all the elements then use for loop.
-
-var upTop = document.getElementsByClassName('playlist-item');
-for(let i = 0;i<upTop.length;i++){
-    upTop[i].addEventListener('click', function() {
-       ...
-    });
-}
-Using forEach
-Or you can convert it into array and use forEach()
-
-var upTop = [...document.getElementsByClassName('playlist-item')];
-upTop.forEach(a => a.addEventListener(click,() => ...))
-Using jQuery
-$('.playlist-item').click(function(){
-   ...
-})
-
-/*/
