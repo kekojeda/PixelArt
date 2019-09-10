@@ -83,12 +83,39 @@ function cargarInvisible() {
 
 var test;
 
+var mouseOnUp;
+
+grillaPixeles.addEventListener("mousedown", function () {
+  mouseOnUp = "DOWN";
+  console.log(mouseOnUp);
+}
+);
+
+grillaPixeles.addEventListener("mouseup", function () {
+  mouseOnUp = "UP";
+  console.log(mouseOnUp);
+}
+);
+
+
+/*
+grillaPixeles.addEventListener("mousemove", function () {
+  if (a == "UP") {
+    console.log("pinta pinta");
+  } else {
+    console.log("no pinta pinta");
+  }
+}
+);*/
+
+
+
 
 
 
 paleta.addEventListener("click", asignarColor);
-grillaPixeles.addEventListener("mousedown", pintar);
-//grillaPixeles.addEventListener("click", pintarCorrido);
+grillaPixeles.addEventListener("click", pintar);
+grillaPixeles.addEventListener("mousemove", pintarCorrido);
 borrarTodo.addEventListener("click", borrar);
 
 
@@ -104,16 +131,6 @@ colorPersonalizado.addEventListener('change',
     indicadorColor.style.backgroundColor = colorActual;
   })
 );
-
-
-grillaPixeles.addEventListener('mousedown', function (e) {
-  console.log('El raton se esta presionando');
-  test = true;
-  e.target.addEventListener('mouseup', function (e) {
-    console.log('El raton NO se esta presionando');
-    test = false;
-  });
-});
 
 function paletaColores() {
   for (var i = 0; i < nombreColores.length; i++) {
@@ -140,11 +157,12 @@ function pintar(e) {
   e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
 }
 
+
 function pintarCorrido(e) {
-  if (test) {
+  if (mouseOnUp=="DOWN") {
     e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
-  } else {
-    console.log("no esta apretado");
+  } else if (mouseOnUp=="UP") {
+    e.target.style.backgroundColor = "none";
   }
 }
 
