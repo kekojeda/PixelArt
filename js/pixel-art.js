@@ -27,6 +27,7 @@ var pixelGrilla = document.getElementsByClassName("pixel");
 var borrarTodo = document.getElementById("borrar");
 var goma = document.getElementById("goma");
 var guardar = document.getElementById("guardar");
+var mouseOnUp;// variable para guardar si el mouse esta presionado o no.
 
 /**
  * Se Ejecutan las Funciones
@@ -58,22 +59,22 @@ flashPixel.addEventListener("click", cargarFlash);
 InvisiblePixel.addEventListener("click", cargarInvisible);
 
 function cargarBatman() {
-  cargarSuperheroe(batman)
+  cargarSuperheroe(batman);
   console.log("se cargo batman");
 }
 
 function cargarFlash() {
-  cargarSuperheroe(flash)
+  cargarSuperheroe(flash);
   console.log("se cargo flash");
 }
 
 function cargarWonder() {
-  cargarSuperheroe(wonder)
+  cargarSuperheroe(wonder);
   console.log("se cargo Wonder Womman");
 }
 
 function cargarInvisible() {
-  cargarSuperheroe(invisible)
+  cargarSuperheroe(invisible);
   console.log("se cargo invisible");
 }
 /**
@@ -81,37 +82,19 @@ function cargarInvisible() {
  */
 
 
-var test;
-
-var mouseOnUp;
-
+/**
+ * EventListenet para detectar mouse presionado o no
+ */
 grillaPixeles.addEventListener("mousedown", function () {
   mouseOnUp = "DOWN";
   console.log(mouseOnUp);
 }
 );
-
 grillaPixeles.addEventListener("mouseup", function () {
   mouseOnUp = "UP";
   console.log(mouseOnUp);
 }
 );
-
-
-/*
-grillaPixeles.addEventListener("mousemove", function () {
-  if (a == "UP") {
-    console.log("pinta pinta");
-  } else {
-    console.log("no pinta pinta");
-  }
-}
-);*/
-
-
-
-
-
 
 paleta.addEventListener("click", asignarColor);
 grillaPixeles.addEventListener("click", pintar);
@@ -166,13 +149,12 @@ function pintarCorrido(e) {
   }
 }
 
-function borrarGoma(e) {
-  if (test) {
-    e.target.style.backgroundColor = "white";
-  } else {
-    console.log("no esta apretado");
+goma.addEventListener("click", borrarGoma);
+
+function borrarGoma() {
+    indicadorColor.style.backgroundColor = "white";
   }
-}
+
 
 /*
   Funcion que borra toda la grilla
